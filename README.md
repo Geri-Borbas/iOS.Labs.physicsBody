@@ -89,6 +89,17 @@ soon, hence the class prefix.
 Versions
 ---
 
+* 0.1.0
+
+    + Path-path containment
+    + Circle-path containment
+    + Circle-circle containment
+
+* 0.0.3
+
+    + Spectacular swizzling features in `EPPZSwizzler`
+    + Tracking body types in `pathType` property
+
 * 0.0.2
 
     + Added containment geomery

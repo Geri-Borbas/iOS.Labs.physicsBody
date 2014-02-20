@@ -9,20 +9,47 @@
 #import "SKPhysicsBody+Containment.h"
 
 
+static NSString *const SKPhysicsBodyPathTypeCircle = @"SKPhysicsBodyPathTypeCircle";
+static NSString *const SKPhysicsBodyPathTypePath = @"SKPhysicsBodyPathTypePath";
+
+
+#pragma mark - Private SKPhysicsBody properties
+
+@interface SKPhysicsBody (Containment_private)
+
+@property (nonatomic) CGPathRef initializingPath;
+@property (nonatomic) NSNumber *radius;
+@property (nonatomic) NSString *pathType;
+
+@end
+
+
+@implementation SKPhysicsBody (Containment_private)
+
+@dynamic initializingPath;
+@dynamic pathType;
+@dynamic radius;
+
+@end
+
+
+#pragma mark - Public SKPhysicsBody properties
+
 @implementation SKPhysicsBody (Containment)
+@dynamic path;
 
-
-// These implementations gonna be swapped on runtime.
--(void)setInitializingPath:(CGPathRef) initializingPath { }
--(CGPathRef)initializingPath { return NULL; }
--(void)setPathType:(NSUInteger) pathType { }
--(NSUInteger)pathType { return 0; }
--(CGPathRef)path { return NULL; }
 -(BOOL)containsPoint:(CGPoint) point { return NO; }
 -(BOOL)containsBody:(SKPhysicsBody*) body { return NO; }
 
 
 @end
+
+
+#pragma mark - Implementation placeholder object
+
+static char initializingPathKey;
+static char pathTypeKey;
+static char radiusKey;
 
 
 @implementation SKPhysicsBodyContainment
@@ -53,10 +80,22 @@
     [EPPZSwizzler replaceClassMethod:@selector(bodyWithPolygonFromPath:) ofClass:physicsBodyClass fromClass:self];
     
     // Add properties to `PKPhysicsBody`.
-    [EPPZSwizzler addInstanceMethod:@selector(initializingPath) toClass:physicsBodyInstanceClass fromClass:self];
-    [EPPZSwizzler addInstanceMethod:@selector(setInitializingPath:) toClass:physicsBodyInstanceClass fromClass:self];
-    [EPPZSwizzler addInstanceMethod:@selector(pathType) toClass:physicsBodyInstanceClass fromClass:self];
-    [EPPZSwizzler addInstanceMethod:@selector(setPathType:) toClass:physicsBodyInstanceClass fromClass:self];
+    [EPPZSwizzler synthesizeAssignPropertyNamed:@"initializingPath"
+                                 ofTypeEncoding:@encode(CGPathRef)
+                                       forClass:physicsBodyInstanceClass
+                                       usingKey:&initializingPathKey];
+    
+    [EPPZSwizzler synthesizeAssignPropertyNamed:@"pathType"
+                                 ofTypeEncoding:@encode(NSString)
+                                       forClass:physicsBodyInstanceClass
+                                       usingKey:&pathTypeKey];
+    
+    [EPPZSwizzler synthesizeRetainPropertyNamed:@"radius"
+                                 ofTypeEncoding:@encode(NSNumber)
+                                       forClass:physicsBodyInstanceClass
+                                       usingKey:&radiusKey];
+     
+    // Only a getter for `path`.
     [EPPZSwizzler addInstanceMethod:@selector(path) toClass:physicsBodyInstanceClass fromClass:self];
     
     // Add instance methods to `PKPhysicsBody`.
@@ -69,28 +108,35 @@
 
 +(SKPhysicsBody*)__bodyWithCircleOfRadius:(CGFloat) radius
 {
+    SKCLog(@"%@ %@", self.class, NSStringFromSelector(_cmd));
+    
     // May seem an endless loop, but it's not (method implementations get swapped on runtime).
     SKPhysicsBody *instance = [self __bodyWithCircleOfRadius:radius];
     instance.initializingPath = centeredCircleWithRadius(radius);
-    //instance.pathType = SKPhysicsBodyPathTypeCircle;
+    instance.radius = @(radius);
+    instance.pathType = SKPhysicsBodyPathTypeCircle;
     return instance;
 }
 
 +(SKPhysicsBody*)__bodyWithRectangleOfSize:(CGSize) size
 {
+    SKCLog(@"%@ %@", self.class, NSStringFromSelector(_cmd));
+    
     // May seem an endless loop, but it's not (method implementations get swapped on runtime).
     SKPhysicsBody *instance = [self __bodyWithRectangleOfSize:size];
     instance.initializingPath = centeredPathFromPath(CGPathCreateWithRect((CGRect){CGPointZero, size}, NULL));
-    //instance.pathType = SKPhysicsBodyPathTypeRectangle;
+    instance.pathType = SKPhysicsBodyPathTypePath;
     return instance;
 }
 
 +(SKPhysicsBody*)__bodyWithPolygonFromPath:(CGPathRef) path
 {
+    SKCLog(@"%@ %@", self.class, NSStringFromSelector(_cmd));
+    
     // May seem an endless loop, but it's not (method implementations get swapped on runtime).
     SKPhysicsBody *instance = [self __bodyWithPolygonFromPath:path];
     instance.initializingPath = path;
-    //instance.pathType = SKPhysicsBodyPathTypePath;
+    instance.pathType = SKPhysicsBodyPathTypePath;
     return instance;
 }
 
@@ -118,21 +164,59 @@
         SKCLog(@"SKPhysicsBody containsBody quick check.");
         return NO;
     }
-    
-    SKCLog(@"SKPhysicsBody containsBody point by point check.");
-    
-    // Get transformed path.
-    CGPathRef path = [self path];
-    
-    // Test for containment for each point of body.
-    __block BOOL everyPointContained = YES;
-    enumeratePointsOfPath(body.path, ^(CGPoint eachPoint)
+
+    // Test path-path, circle-path.
+    if (
+        (self.pathType == SKPhysicsBodyPathTypePath && body.pathType == SKPhysicsBodyPathTypePath) ||
+        (self.pathType == SKPhysicsBodyPathTypeCircle && body.pathType == SKPhysicsBodyPathTypePath)
+       )
     {
-        if (CGPathContainsPoint(path, NULL, eachPoint, NO) == NO)
-        { everyPointContained = NO; }
-    });
+        SKCLog(@"SKPhysicsBody containsBody path against path test (point by point).");
+        
+        // Get transformed path.
+        CGPathRef path = [self path];
+        
+        // Test for containment for each point of body.
+        __block BOOL everyPointContained = YES;
+        enumeratePointsOfPath(body.path, ^(CGPoint eachPoint)
+        {
+            if (CGPathContainsPoint(path, NULL, eachPoint, NO) == NO)
+            { everyPointContained = NO; }
+        });
+        
+        return everyPointContained;
+    }
     
-    return everyPointContained;
+    // Test circle-circle.
+    if (self.pathType == SKPhysicsBodyPathTypeCircle && body.pathType == SKPhysicsBodyPathTypeCircle)
+    {
+        // Size test.
+        if (self.radius.floatValue < body.radius.floatValue) return NO;
+        
+        // Radius test.
+        CGFloat maximumDistance = self.radius.floatValue - body.radius.floatValue;
+        CGFloat distance = __distanceBetweenPoints(self.node.position, body.node.position);
+        BOOL contained = (distance < maximumDistance);
+        return contained;
+    }
+    
+    // Test path-circle.
+    if (self.pathType == SKPhysicsBodyPathTypePath && body.pathType == SKPhysicsBodyPathTypeCircle)
+    {
+        // Test bounding box containment first.
+        BOOL boundingBoxTest;
+        CGRect bounds = CGPathGetBoundingBox(self.path);
+        CGRect bodyBounds = CGPathGetBoundingBox(body.path);
+        boundingBoxTest = CGRectContainsRect(bounds, bodyBounds);
+        if (boundingBoxTest == NO) return NO;
+        
+        // Test bounding box point containment then.
+        return YES;
+        
+        // So test for circle edge distances.
+    }
+    
+    return NO;
 }
 
 
@@ -179,5 +263,48 @@ void CGPathEnumerationCallback(void *info, const CGPathElement *element)
         case kCGPathElementAddCurveToPoint: { break; }
         case kCGPathElementCloseSubpath: { break; }
     }
+}
+
+
+#pragma mark - Guest methods from EPPZGeometry
+
+CGVector __vectorBetweenPoints(CGPoint from, CGPoint to)
+{ return (CGVector){to.x - from.x, to.y - from.y}; }
+
+CGFloat __distanceBetweenPoints(CGPoint from, CGPoint to)
+{
+    CGVector vector = __vectorBetweenPoints(from, to);
+    return sqrtf(powf(vector.dx, 2) + powf(vector.dy, 2));
+}
+
+CGFloat __distanceBetweenPointAndLineSegment(CGPoint point, CGLine line)
+{
+    // From http://www.allegro.cc/forums/thread/589720/644831
+    CGFloat a = point.x - line.a.x;
+    CGFloat b = point.y - line.a.y;
+    CGFloat c = line.b.x - line.a.x;
+    CGFloat d = line.b.y - line.a.y;
+    
+    CGFloat e = a * c + b * d;
+    CGFloat f = c * c + d * d;
+    CGFloat test = e / f;
+    
+    CGPoint testPoint;
+    
+    if(test < 0.0)
+    { testPoint = line.a; }
+    
+    else if (test > 1.0)
+    { testPoint = line.b; }
+    
+    else
+    {
+        testPoint = (CGPoint){
+            line.a.x + test * c,
+            line.a.y + test * d
+        };
+    }
+    
+    return __distanceBetweenPoints(point, testPoint);
 }
 
