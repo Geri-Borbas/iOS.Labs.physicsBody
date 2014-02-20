@@ -1,0 +1,390 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		AE88D38C18B56C8F00B561EA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE88D38B18B56C8F00B561EA /* Foundation.framework */; };
+		AE88D38E18B56C8F00B561EA /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE88D38D18B56C8F00B561EA /* CoreGraphics.framework */; };
+		AE88D39018B56C8F00B561EA /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE88D38F18B56C8F00B561EA /* UIKit.framework */; };
+		AE88D39218B56C8F00B561EA /* SpriteKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE88D39118B56C8F00B561EA /* SpriteKit.framework */; };
+		AE88D3DE18B59F1D00B561EA /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = AE88D3D918B59F1D00B561EA /* InfoPlist.strings */; };
+		AE88D3DF18B59F1D00B561EA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = AE88D3DB18B59F1D00B561EA /* main.m */; };
+		AE88D3E018B59F1D00B561EA /* PhysicsBody-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = AE88D3DC18B59F1D00B561EA /* PhysicsBody-Info.plist */; };
+		AE88D3E518B59F3400B561EA /* Main_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AE88D3E118B59F3400B561EA /* Main_iPad.storyboard */; };
+		AE88D3E618B59F3400B561EA /* Main_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AE88D3E318B59F3400B561EA /* Main_iPhone.storyboard */; };
+		AE88D3EB18B59F4300B561EA /* EPPZAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = AE88D3E818B59F4300B561EA /* EPPZAppDelegate.m */; };
+		AE88D3EC18B59F4300B561EA /* EPPZViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AE88D3EA18B59F4300B561EA /* EPPZViewController.m */; };
+		AE88D3F118B5A01700B561EA /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AE88D3F018B5A01700B561EA /* Images.xcassets */; };
+		AE88D3F418B5A03200B561EA /* EPPZScene.m in Sources */ = {isa = PBXBuildFile; fileRef = AE88D3F318B5A03200B561EA /* EPPZScene.m */; };
+		AE88D3F718B5A03B00B561EA /* EPPZSwizzler.m in Sources */ = {isa = PBXBuildFile; fileRef = AE88D3F618B5A03A00B561EA /* EPPZSwizzler.m */; };
+		AE88D3FA18B5A04400B561EA /* SKPhysicsBody+Containment.m in Sources */ = {isa = PBXBuildFile; fileRef = AE88D3F918B5A04400B561EA /* SKPhysicsBody+Containment.m */; };
+		AE88D3FC18B5A0B500B561EA /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = AE88D3FB18B5A0B500B561EA /* README.md */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		AE88D38818B56C8F00B561EA /* PhysicsBody.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PhysicsBody.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		AE88D38B18B56C8F00B561EA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		AE88D38D18B56C8F00B561EA /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		AE88D38F18B56C8F00B561EA /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		AE88D39118B56C8F00B561EA /* SpriteKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SpriteKit.framework; path = System/Library/Frameworks/SpriteKit.framework; sourceTree = SDKROOT; };
+		AE88D3B418B56C9000B561EA /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		AE88D3DA18B59F1D00B561EA /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = PhysicsBody/en.lproj/InfoPlist.strings; sourceTree = SOURCE_ROOT; };
+		AE88D3DB18B59F1D00B561EA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = PhysicsBody/main.m; sourceTree = SOURCE_ROOT; };
+		AE88D3DC18B59F1D00B561EA /* PhysicsBody-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "PhysicsBody-Info.plist"; path = "PhysicsBody/PhysicsBody-Info.plist"; sourceTree = SOURCE_ROOT; };
+		AE88D3DD18B59F1D00B561EA /* PhysicsBody-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "PhysicsBody-Prefix.pch"; path = "PhysicsBody/PhysicsBody-Prefix.pch"; sourceTree = SOURCE_ROOT; };
+		AE88D3E218B59F3400B561EA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = PhysicsBody/Base.lproj/Main_iPad.storyboard; sourceTree = SOURCE_ROOT; };
+		AE88D3E418B59F3400B561EA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = PhysicsBody/Base.lproj/Main_iPhone.storyboard; sourceTree = SOURCE_ROOT; };
+		AE88D3E718B59F4300B561EA /* EPPZAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EPPZAppDelegate.h; path = PhysicsBody/EPPZAppDelegate.h; sourceTree = SOURCE_ROOT; };
+		AE88D3E818B59F4300B561EA /* EPPZAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EPPZAppDelegate.m; path = PhysicsBody/EPPZAppDelegate.m; sourceTree = SOURCE_ROOT; };
+		AE88D3E918B59F4300B561EA /* EPPZViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EPPZViewController.h; path = PhysicsBody/EPPZViewController.h; sourceTree = SOURCE_ROOT; };
+		AE88D3EA18B59F4300B561EA /* EPPZViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EPPZViewController.m; path = PhysicsBody/EPPZViewController.m; sourceTree = SOURCE_ROOT; };
+		AE88D3F018B5A01700B561EA /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = PhysicsBody/Images.xcassets; sourceTree = SOURCE_ROOT; };
+		AE88D3F218B5A03200B561EA /* EPPZScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EPPZScene.h; path = PhysicsBody/EPPZScene.h; sourceTree = SOURCE_ROOT; };
+		AE88D3F318B5A03200B561EA /* EPPZScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EPPZScene.m; path = PhysicsBody/EPPZScene.m; sourceTree = SOURCE_ROOT; };
+		AE88D3F518B5A03A00B561EA /* EPPZSwizzler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EPPZSwizzler.h; path = PhysicsBody/EPPZSwizzler.h; sourceTree = SOURCE_ROOT; };
+		AE88D3F618B5A03A00B561EA /* EPPZSwizzler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EPPZSwizzler.m; path = PhysicsBody/EPPZSwizzler.m; sourceTree = SOURCE_ROOT; };
+		AE88D3F818B5A04400B561EA /* SKPhysicsBody+Containment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "SKPhysicsBody+Containment.h"; path = "PhysicsBody/SKPhysicsBody+Containment.h"; sourceTree = SOURCE_ROOT; };
+		AE88D3F918B5A04400B561EA /* SKPhysicsBody+Containment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "SKPhysicsBody+Containment.m"; path = "PhysicsBody/SKPhysicsBody+Containment.m"; sourceTree = SOURCE_ROOT; };
+		AE88D3FB18B5A0B500B561EA /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		AE88D38518B56C8F00B561EA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AE88D38E18B56C8F00B561EA /* CoreGraphics.framework in Frameworks */,
+				AE88D39018B56C8F00B561EA /* UIKit.framework in Frameworks */,
+				AE88D39218B56C8F00B561EA /* SpriteKit.framework in Frameworks */,
+				AE88D38C18B56C8F00B561EA /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		AE88D37F18B56C8F00B561EA = {
+			isa = PBXGroup;
+			children = (
+				AE88D3FB18B5A0B500B561EA /* README.md */,
+				AE88D39318B56C8F00B561EA /* PhysicsBody */,
+				AE88D38A18B56C8F00B561EA /* Frameworks */,
+				AE88D38918B56C8F00B561EA /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		AE88D38918B56C8F00B561EA /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				AE88D38818B56C8F00B561EA /* PhysicsBody.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		AE88D38A18B56C8F00B561EA /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				AE88D38B18B56C8F00B561EA /* Foundation.framework */,
+				AE88D38D18B56C8F00B561EA /* CoreGraphics.framework */,
+				AE88D38F18B56C8F00B561EA /* UIKit.framework */,
+				AE88D39118B56C8F00B561EA /* SpriteKit.framework */,
+				AE88D3B418B56C9000B561EA /* XCTest.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		AE88D39318B56C8F00B561EA /* PhysicsBody */ = {
+			isa = PBXGroup;
+			children = (
+				AE88D3E718B59F4300B561EA /* EPPZAppDelegate.h */,
+				AE88D3E818B59F4300B561EA /* EPPZAppDelegate.m */,
+				AE88D3E918B59F4300B561EA /* EPPZViewController.h */,
+				AE88D3EA18B59F4300B561EA /* EPPZViewController.m */,
+				AE88D3E118B59F3400B561EA /* Main_iPad.storyboard */,
+				AE88D3E318B59F3400B561EA /* Main_iPhone.storyboard */,
+				AE88D3ED18B59F4700B561EA /* Scene */,
+				AE88D39418B56C8F00B561EA /* Supporting Files */,
+			);
+			name = PhysicsBody;
+			path = Categories;
+			sourceTree = "<group>";
+		};
+		AE88D39418B56C8F00B561EA /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				AE88D3F018B5A01700B561EA /* Images.xcassets */,
+				AE88D3D918B59F1D00B561EA /* InfoPlist.strings */,
+				AE88D3DB18B59F1D00B561EA /* main.m */,
+				AE88D3DC18B59F1D00B561EA /* PhysicsBody-Info.plist */,
+				AE88D3DD18B59F1D00B561EA /* PhysicsBody-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		AE88D3ED18B59F4700B561EA /* Scene */ = {
+			isa = PBXGroup;
+			children = (
+				AE88D3F218B5A03200B561EA /* EPPZScene.h */,
+				AE88D3F318B5A03200B561EA /* EPPZScene.m */,
+				AE88D3EE18B59F5000B561EA /* SKPhysicsBody+Containment */,
+			);
+			name = Scene;
+			sourceTree = "<group>";
+		};
+		AE88D3EE18B59F5000B561EA /* SKPhysicsBody+Containment */ = {
+			isa = PBXGroup;
+			children = (
+				AE88D3F818B5A04400B561EA /* SKPhysicsBody+Containment.h */,
+				AE88D3F918B5A04400B561EA /* SKPhysicsBody+Containment.m */,
+				AE88D3EF18B59F5C00B561EA /* EPPZSwizzler */,
+			);
+			name = "SKPhysicsBody+Containment";
+			sourceTree = "<group>";
+		};
+		AE88D3EF18B59F5C00B561EA /* EPPZSwizzler */ = {
+			isa = PBXGroup;
+			children = (
+				AE88D3F518B5A03A00B561EA /* EPPZSwizzler.h */,
+				AE88D3F618B5A03A00B561EA /* EPPZSwizzler.m */,
+			);
+			name = EPPZSwizzler;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		AE88D38718B56C8F00B561EA /* PhysicsBody */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AE88D3C418B56C9000B561EA /* Build configuration list for PBXNativeTarget "PhysicsBody" */;
+			buildPhases = (
+				AE88D38418B56C8F00B561EA /* Sources */,
+				AE88D38518B56C8F00B561EA /* Frameworks */,
+				AE88D38618B56C8F00B561EA /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = PhysicsBody;
+			productName = Categories;
+			productReference = AE88D38818B56C8F00B561EA /* PhysicsBody.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		AE88D38018B56C8F00B561EA /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = EPPZ;
+				LastUpgradeCheck = 0500;
+				ORGANIZATIONNAME = "eppz! development, LLC";
+			};
+			buildConfigurationList = AE88D38318B56C8F00B561EA /* Build configuration list for PBXProject "PhysicsBody" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = AE88D37F18B56C8F00B561EA;
+			productRefGroup = AE88D38918B56C8F00B561EA /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				AE88D38718B56C8F00B561EA /* PhysicsBody */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		AE88D38618B56C8F00B561EA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AE88D3FC18B5A0B500B561EA /* README.md in Resources */,
+				AE88D3E518B59F3400B561EA /* Main_iPad.storyboard in Resources */,
+				AE88D3F118B5A01700B561EA /* Images.xcassets in Resources */,
+				AE88D3E618B59F3400B561EA /* Main_iPhone.storyboard in Resources */,
+				AE88D3E018B59F1D00B561EA /* PhysicsBody-Info.plist in Resources */,
+				AE88D3DE18B59F1D00B561EA /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		AE88D38418B56C8F00B561EA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AE88D3F718B5A03B00B561EA /* EPPZSwizzler.m in Sources */,
+				AE88D3FA18B5A04400B561EA /* SKPhysicsBody+Containment.m in Sources */,
+				AE88D3DF18B59F1D00B561EA /* main.m in Sources */,
+				AE88D3EB18B59F4300B561EA /* EPPZAppDelegate.m in Sources */,
+				AE88D3F418B5A03200B561EA /* EPPZScene.m in Sources */,
+				AE88D3EC18B59F4300B561EA /* EPPZViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		AE88D3D918B59F1D00B561EA /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				AE88D3DA18B59F1D00B561EA /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		AE88D3E118B59F3400B561EA /* Main_iPad.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				AE88D3E218B59F3400B561EA /* Base */,
+			);
+			name = Main_iPad.storyboard;
+			sourceTree = "<group>";
+		};
+		AE88D3E318B59F3400B561EA /* Main_iPhone.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				AE88D3E418B59F3400B561EA /* Base */,
+			);
+			name = Main_iPhone.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		AE88D3C218B56C9000B561EA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		AE88D3C318B56C9000B561EA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		AE88D3C518B56C9000B561EA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "PhysicsBody/PhysicsBody-Prefix.pch";
+				INFOPLIST_FILE = "PhysicsBody/PhysicsBody-Info.plist";
+				PRODUCT_NAME = PhysicsBody;
+				SPRITEKIT_TEXTURE_ATLAS_OUTPUT = YES;
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		AE88D3C618B56C9000B561EA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "PhysicsBody/PhysicsBody-Prefix.pch";
+				INFOPLIST_FILE = "PhysicsBody/PhysicsBody-Info.plist";
+				PRODUCT_NAME = PhysicsBody;
+				SPRITEKIT_TEXTURE_ATLAS_OUTPUT = YES;
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		AE88D38318B56C8F00B561EA /* Build configuration list for PBXProject "PhysicsBody" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AE88D3C218B56C9000B561EA /* Debug */,
+				AE88D3C318B56C9000B561EA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AE88D3C418B56C9000B561EA /* Build configuration list for PBXNativeTarget "PhysicsBody" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AE88D3C518B56C9000B561EA /* Debug */,
+				AE88D3C618B56C9000B561EA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = AE88D38018B56C8F00B561EA /* Project object */;
+}

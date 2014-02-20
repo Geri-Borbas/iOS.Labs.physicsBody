@@ -7,7 +7,7 @@
 //
 
 #import "EPPZViewController.h"
-#import "EPPZMyScene.h"
+#import "EPPZScene.h"
 
 @implementation EPPZViewController
 
@@ -15,7 +15,7 @@
 -(void)viewDidLoad
 {
     [super viewDidLoad];
-    [(SKView*)self.view presentScene:[EPPZMyScene sceneWithSize:self.view.bounds.size]];
+    [(SKView*)self.view presentScene:[EPPZScene sceneWithSize:self.view.bounds.size]];
 }
 
 

@@ -10,6 +10,6 @@
 #import "SKPhysicsBody+Containment.h"
 
 
-@interface EPPZMyScene : SKScene
+@interface EPPZScene : SKScene
 
 @end

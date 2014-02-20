@@ -7,28 +7,11 @@
 //
 
 #import <SpriteKit/SpriteKit.h>
+#import "EPPZSwizzler.h"
 
 
 #define SK_PHYSICS_BODY_CONTAINMENT_LOGGING YES
 #define SKCLog if (SK_PHYSICS_BODY_CONTAINMENT_LOGGING) NSLog
-
-
-// Swizzle implementations at runtime.
-@interface EPPZSwizzler : NSObject
-
-+(void)replaceClassMethod:(SEL) selector
-                  ofClass:(Class) targetClass
-                fromClass:(Class) sourceClass;
-
-+(void)addInstanceMethod:(SEL) selector
-                 toClass:(Class) targetClass
-               fromClass:(Class) sourceClass;
-
-+(void)addPropertyNamed:(NSString*) instanceVariableName
-                toClass:(Class) targetClass
-              fromClass:(Class) sourceClass;
-
-@end
 
 
 // Interface for the new features.
@@ -49,3 +32,9 @@
 -(BOOL)containsBody:(SKPhysicsBody*) body;
 
 @end
+
+
+// CGPath helpers.
+typedef void(^CGPathPointEnumeratingBlock)(CGPoint eachPoint);
+void enumeratePointsOfPath(CGPathRef path, CGPathPointEnumeratingBlock enumeratingBlock);
+void CGPathEnumerationCallback(void *info, const CGPathElement *element);

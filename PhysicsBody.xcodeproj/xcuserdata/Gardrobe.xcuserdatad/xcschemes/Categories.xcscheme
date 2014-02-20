@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "AE88D38718B56C8F00B561EA"
-               BuildableName = "Categories.app"
-               BlueprintName = "Categories"
-               ReferencedContainer = "container:Categories.xcodeproj">
+               BuildableName = "PhysicsBody.app"
+               BlueprintName = "PhysicsBody"
+               ReferencedContainer = "container:PhysicsBody.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -34,8 +34,8 @@
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "AE88D3B218B56C9000B561EA"
                BuildableName = "CategoriesTests.xctest"
-               BlueprintName = "CategoriesTests"
-               ReferencedContainer = "container:Categories.xcodeproj">
+               BlueprintName = "PhysicsBodyTests"
+               ReferencedContainer = "container:PhysicsBody.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -43,9 +43,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "AE88D38718B56C8F00B561EA"
-            BuildableName = "Categories.app"
-            BlueprintName = "Categories"
-            ReferencedContainer = "container:Categories.xcodeproj">
+            BuildableName = "PhysicsBody.app"
+            BlueprintName = "PhysicsBody"
+            ReferencedContainer = "container:PhysicsBody.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </TestAction>
@@ -62,9 +62,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "AE88D38718B56C8F00B561EA"
-            BuildableName = "Categories.app"
-            BlueprintName = "Categories"
-            ReferencedContainer = "container:Categories.xcodeproj">
+            BuildableName = "PhysicsBody.app"
+            BlueprintName = "PhysicsBody"
+            ReferencedContainer = "container:PhysicsBody.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -80,9 +80,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "AE88D38718B56C8F00B561EA"
-            BuildableName = "Categories.app"
-            BlueprintName = "Categories"
-            ReferencedContainer = "container:Categories.xcodeproj">
+            BuildableName = "PhysicsBody.app"
+            BlueprintName = "PhysicsBody"
+            ReferencedContainer = "container:PhysicsBody.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

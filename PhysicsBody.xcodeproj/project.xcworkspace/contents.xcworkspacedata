@@ -2,6 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:Categories.xcodeproj">
+      location = "self:PhysicsBody.xcodeproj">
    </FileRef>
 </Workspace>
