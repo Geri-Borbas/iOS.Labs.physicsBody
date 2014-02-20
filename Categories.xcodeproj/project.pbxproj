@@ -25,6 +25,7 @@
 		AE88D3B718B56C9000B561EA /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE88D38F18B56C8F00B561EA /* UIKit.framework */; };
 		AE88D3BF18B56C9000B561EA /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = AE88D3BD18B56C9000B561EA /* InfoPlist.strings */; };
 		AE88D3C118B56C9000B561EA /* CategoriesTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AE88D3C018B56C9000B561EA /* CategoriesTests.m */; };
+		AE88D3D518B5713500B561EA /* SKPhysicsBody+Containment.m in Sources */ = {isa = PBXBuildFile; fileRef = AE88D3D418B5713500B561EA /* SKPhysicsBody+Containment.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -62,6 +63,8 @@
 		AE88D3BC18B56C9000B561EA /* CategoriesTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "CategoriesTests-Info.plist"; sourceTree = "<group>"; };
 		AE88D3BE18B56C9000B561EA /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		AE88D3C018B56C9000B561EA /* CategoriesTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CategoriesTests.m; sourceTree = "<group>"; };
+		AE88D3D318B5713500B561EA /* SKPhysicsBody+Containment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "SKPhysicsBody+Containment.h"; path = "../SKPhysicsBody+Containment.h"; sourceTree = "<group>"; };
+		AE88D3D418B5713500B561EA /* SKPhysicsBody+Containment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "SKPhysicsBody+Containment.m"; path = "../SKPhysicsBody+Containment.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -129,6 +132,8 @@
 				AE88D3A218B56C8F00B561EA /* Main_iPad.storyboard */,
 				AE88D3A518B56C8F00B561EA /* EPPZViewController.h */,
 				AE88D3A618B56C8F00B561EA /* EPPZViewController.m */,
+				AE88D3D318B5713500B561EA /* SKPhysicsBody+Containment.h */,
+				AE88D3D418B5713500B561EA /* SKPhysicsBody+Containment.m */,
 				AE88D3A818B56C8F00B561EA /* EPPZMyScene.h */,
 				AE88D3A918B56C8F00B561EA /* EPPZMyScene.m */,
 				AE88D3AB18B56C8F00B561EA /* Spaceship.png */,
@@ -271,6 +276,7 @@
 				AE88D39E18B56C8F00B561EA /* EPPZAppDelegate.m in Sources */,
 				AE88D3A718B56C8F00B561EA /* EPPZViewController.m in Sources */,
 				AE88D3AA18B56C8F00B561EA /* EPPZMyScene.m in Sources */,
+				AE88D3D518B5713500B561EA /* SKPhysicsBody+Containment.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

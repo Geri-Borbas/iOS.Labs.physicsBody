@@ -7,6 +7,8 @@
 //
 
 #import <SpriteKit/SpriteKit.h>
+#import "SKPhysicsBody+Containment.h"
+
 
 @interface EPPZMyScene : SKScene
 

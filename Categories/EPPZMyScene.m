@@ -15,20 +15,33 @@
         /* Setup your scene here */
         
         self.backgroundColor = [SKColor colorWithRed:0.15 green:0.15 blue:0.3 alpha:1.0];
+        SKPhysicsBody *body;
+        SKPhysicsBody *buddy;
         
-        SKLabelNode *myLabel = [SKLabelNode labelNodeWithFontNamed:@"Chalkduster"];
+        CGFloat width = 60.0;
+        CGRect rect = (CGRect){CGPointZero, width, width};
+        CGPathRef path = CGPathCreateWithRect(rect, NULL);
         
-        myLabel.text = @"Hello, World!";
-        myLabel.fontSize = 30;
-        myLabel.position = CGPointMake(CGRectGetMidX(self.frame),
-                                       CGRectGetMidY(self.frame));
+        body = [SKPhysicsBody bodyWithCircleOfRadius:width / 2.0];
+        body.initializingPath = path;
+        NSLog(@"%i", (body.path == path));
+        body = [SKPhysicsBody bodyWithPolygonFromPath:path];
+        body.initializingPath = path;
+        NSLog(@"%i", (body.path == path));
+        body = [SKPhysicsBody bodyWithRectangleOfSize:rect.size];
+        body.initializingPath = path;
+        NSLog(@"%i", (body.path == path));
         
-        [self addChild:myLabel];
+        buddy = [SKPhysicsBody bodyWithRectangleOfSize:rect.size];
+        CGPathRef anotherPath = CGPathCreateWithRect(rect, NULL);
+        buddy.initializingPath = anotherPath;
+        NSLog(@"%i", (buddy.path == anotherPath));
     }
     return self;
 }
 
--(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+-(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+{
     /* Called when a touch begins */
     
     for (UITouch *touch in touches) {
