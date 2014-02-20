@@ -141,8 +141,13 @@ CGFloat __distanceBetweenPointAndLineSegment(CGPoint point, CGLine line);
     [EPPZSwizzler addInstanceMethod:@selector(path) toClass:physicsBodyInstanceClass fromClass:self];
     
     // Add instance methods to `PKPhysicsBody`.
-    [EPPZSwizzler addInstanceMethod:@selector(containsPoint:) toClass:physicsBodyInstanceClass fromClass:self];
-    [EPPZSwizzler addInstanceMethod:@selector(containsBody:) toClass:physicsBodyInstanceClass fromClass:self];
+    [EPPZSwizzler addInstanceMethod:@selector(containsPoint:)
+                            toClass:physicsBodyInstanceClass
+                          fromClass:self];
+    
+    [EPPZSwizzler addInstanceMethod:@selector(containsBody:)
+                            toClass:physicsBodyInstanceClass
+                          fromClass:self];
 }
 
 

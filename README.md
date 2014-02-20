@@ -91,11 +91,24 @@ that holds all the implementation** that needs to be swizzled around. Then upon 
 this class, I distribute the implementations to the parties discussed above.
 
 
-`EPPZSwizzler`
---------------
+[`EPPZSwizzler`][5]
+-------------------
 
-It actually wraps up the swizzling methods into an Objective-C interface, gonna put it into [eppz!kit][4]
-soon, hence the class prefix.
+It actually wraps up the swizzling, and some other runtime class manipulation methods into an Objective-C
+interface. Gonna put it into [eppz!kit][4] soon, hence the class prefix. You can see the header
+[`EPPZSwizzler.h`][5] for documentations.
+
+```Objective-C
+// Copies method implementation from a donor class.
+[EPPZSwizzler addInstanceMethod:@selector(containsBody:)
+                        toClass:physicsBodyInstanceClass
+                      fromClass:self];
+
+// Like you was define a `@property (nonatomic, assign) NSString *pathType`.
+[EPPZSwizzler synthesizeAssignedPropertyNamed:@"pathType"
+                               ofTypeEncoding:@encode(NSString)
+                                     forClass:physicsBodyInstanceClass];
+```
 
 
 Versions
@@ -131,4 +144,5 @@ Versions
   [2]: https://github.com/EthanArbuckle/IOS-7-Headers/tree/master/PrivateFrameworks/PhysicsKit.framework
   [3]: https://github.com/eppz/labs-physicsBody/blob/master/PhysicsBody/SKPhysicsBody%2BContainment.m
   [4]: https://github.com/eppz/eppz-kit
+  [5]: https://github.com/eppz/labs-physicsBody/blob/master/PhysicsBody/EPPZSwizzler.h
 
