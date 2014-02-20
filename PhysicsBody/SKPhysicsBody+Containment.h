@@ -25,6 +25,7 @@ typedef enum
 @interface SKPhysicsBody (Containment)
 
 @property (nonatomic, readonly) CGPathRef path;
+@property (nonatomic) NSUInteger pathType;
 
 -(BOOL)containsPoint:(CGPoint) point;
 -(BOOL)containsBody:(SKPhysicsBody*) body;
@@ -36,7 +37,7 @@ typedef enum
 @interface SKPhysicsBodyContainment : SKPhysicsBody
 
 @property (nonatomic) CGPathRef initializingPath;
-@property (nonatomic) SKPhysicsBodyPathType pathType;
+@property (nonatomic) NSUInteger pathType;
 
 @property (nonatomic, readonly) CGPathRef path;
 -(BOOL)containsPoint:(CGPoint) point;

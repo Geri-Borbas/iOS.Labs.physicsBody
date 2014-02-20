@@ -74,6 +74,17 @@ runtime).
 NSLog(@"%@", SKPhysicsBody.class); // SKPhysicsBody
 ```
 
+So for the solution, I created a standalone **class `SKPhysicsBodyContainment` that holds all the
+implementation** that needs to be swizzled around. Then upon the load of this class, I distribute the
+implementations to the parties discussed above.
+
+
+`EPPZSwizzler`
+--------------
+
+It actually wraps up the swizzling methods into an Objective-C interface, gonna put it into [eppz!kit][4]
+soon, hence the class prefix.
+
 
 Versions
 ---
@@ -91,4 +102,5 @@ Versions
   [1]: https://github.com/JaviSoto/iOS7-Runtime-Headers/blob/master/PrivateFrameworks/PhysicsKit.framework/PKPhysicsBody.h
   [2]: https://github.com/EthanArbuckle/IOS-7-Headers/tree/master/PrivateFrameworks/PhysicsKit.framework
   [3]: https://github.com/eppz/labs-physicsBody/blob/master/PhysicsBody/SKPhysicsBody%2BContainment.m
+  [4]: https://github.com/eppz/eppz-kit
 

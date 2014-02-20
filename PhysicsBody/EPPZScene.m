@@ -47,6 +47,8 @@
     
     [self addChild:self.one];
     [self addChild:self.other];
+    
+    self.one.physicsBody.pathType = SKPhysicsBodyPathTypeRectangle;
 }
 
 
@@ -55,18 +57,14 @@
 
 -(void)touchesBegan:(NSSet*)touches withEvent:(UIEvent*) event
 {
-    CGPoint touchLocation = [[touches anyObject] locationInNode:self];
-    if ([self.one.physicsBody containsPoint:touchLocation])
+    if ([self.one.physicsBody containsPoint:[[touches anyObject] locationInNode:self]])
     { self.dragging = YES; }
 }
 
 -(void)touchesMoved:(NSSet*) touches withEvent:(UIEvent*) event
 {
-    CGPoint touchLocation = [[touches anyObject] locationInNode:self];
     if (self.dragging)
-    {
-        self.one.position = touchLocation;
-    }
+    { self.one.position = [[touches anyObject] locationInNode:self]; }
 }
 
 -(void)touchesEnded:(NSSet*) touches withEvent:(UIEvent*) event

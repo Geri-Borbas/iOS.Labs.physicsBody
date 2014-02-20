@@ -15,8 +15,8 @@
 // These implementations gonna be swapped on runtime.
 -(void)setInitializingPath:(CGPathRef) initializingPath { }
 -(CGPathRef)initializingPath { return NULL; }
--(void)setPathType:(SKPhysicsBodyPathType) pathType { }
--(SKPhysicsBodyPathType)pathType { return SKPhysicsBodyPathTypeCircle; }
+-(void)setPathType:(NSUInteger) pathType { }
+-(NSUInteger)pathType { return 0; }
 -(CGPathRef)path { return NULL; }
 -(BOOL)containsPoint:(CGPoint) point { return NO; }
 -(BOOL)containsBody:(SKPhysicsBody*) body { return NO; }
