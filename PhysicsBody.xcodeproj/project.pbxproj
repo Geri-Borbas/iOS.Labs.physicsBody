@@ -11,18 +11,12 @@
 		AE88D38E18B56C8F00B561EA /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE88D38D18B56C8F00B561EA /* CoreGraphics.framework */; };
 		AE88D39018B56C8F00B561EA /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE88D38F18B56C8F00B561EA /* UIKit.framework */; };
 		AE88D39218B56C8F00B561EA /* SpriteKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE88D39118B56C8F00B561EA /* SpriteKit.framework */; };
-		AE88D3DE18B59F1D00B561EA /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = AE88D3D918B59F1D00B561EA /* InfoPlist.strings */; };
 		AE88D3DF18B59F1D00B561EA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = AE88D3DB18B59F1D00B561EA /* main.m */; };
-		AE88D3E018B59F1D00B561EA /* PhysicsBody-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = AE88D3DC18B59F1D00B561EA /* PhysicsBody-Info.plist */; };
-		AE88D3E518B59F3400B561EA /* Main_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AE88D3E118B59F3400B561EA /* Main_iPad.storyboard */; };
-		AE88D3E618B59F3400B561EA /* Main_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AE88D3E318B59F3400B561EA /* Main_iPhone.storyboard */; };
 		AE88D3EB18B59F4300B561EA /* EPPZAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = AE88D3E818B59F4300B561EA /* EPPZAppDelegate.m */; };
 		AE88D3EC18B59F4300B561EA /* EPPZViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AE88D3EA18B59F4300B561EA /* EPPZViewController.m */; };
-		AE88D3F118B5A01700B561EA /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AE88D3F018B5A01700B561EA /* Images.xcassets */; };
 		AE88D3F418B5A03200B561EA /* EPPZScene.m in Sources */ = {isa = PBXBuildFile; fileRef = AE88D3F318B5A03200B561EA /* EPPZScene.m */; };
 		AE88D3F718B5A03B00B561EA /* EPPZSwizzler.m in Sources */ = {isa = PBXBuildFile; fileRef = AE88D3F618B5A03A00B561EA /* EPPZSwizzler.m */; };
 		AE88D3FA18B5A04400B561EA /* SKPhysicsBody+Containment.m in Sources */ = {isa = PBXBuildFile; fileRef = AE88D3F918B5A04400B561EA /* SKPhysicsBody+Containment.m */; };
-		AE88D3FC18B5A0B500B561EA /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = AE88D3FB18B5A0B500B561EA /* README.md */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -207,12 +201,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AE88D3FC18B5A0B500B561EA /* README.md in Resources */,
-				AE88D3E518B59F3400B561EA /* Main_iPad.storyboard in Resources */,
-				AE88D3F118B5A01700B561EA /* Images.xcassets in Resources */,
-				AE88D3E618B59F3400B561EA /* Main_iPhone.storyboard in Resources */,
-				AE88D3E018B59F1D00B561EA /* PhysicsBody-Info.plist in Resources */,
-				AE88D3DE18B59F1D00B561EA /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -383,6 +371,7 @@
 				AE88D3C618B56C9000B561EA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
