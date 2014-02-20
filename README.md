@@ -37,7 +37,7 @@ enumeratePointsOfPath(body.path, ^(CGPoint eachPoint)
 ```
 
 Another issue is to **store the initial `CGPath` representation** of the body upon creation. This initial
-path can be transformed later on when it requested. This code should take place in the SKPhysicsBody
+path can be transformed later on when it requested. This code should take place in the `SKPhysicsBody`
 factory methods. Calling the default behaviour can be tricky (it could be a simple `super` call if we were
 extending the class).
 
@@ -47,7 +47,7 @@ and call the default behaviour from within somewhere.
 For `+(SKPhysicsBody*)bodyWithCircleOfRadius:` it means that you create an implementation that is to
 be override `+(SKPhysicsBody*)bodyWithCircleOfRadius:` implementation, while you save the original
 implementation into a method, called `+(SKPhysicsBody*)__bodyWithCircleOfRadius:` in this case. See 
-his in action in [`SKPhysicsBody+Containment`][1] searching for `Augment factories`.
+his in action in [`SKPhysicsBody+Containment`][3] searching for `Augment factories`.
 
 
 Category on `SKPhysicsBody`
@@ -75,8 +75,8 @@ NSLog(@"%@", SKPhysicsBody.class); // SKPhysicsBody
 ```
 
 So for the solution, I created a standalone **class `SKPhysicsBodyContainment` that holds all the
-implementation** that needs to be swizzled around. Then upon the load of this class, I distribute the
-implementations to the parties discussed above.
+implementation** that needs to be swizzled around. Then upon the `+(void)load` of this class, I distribute
+the implementations to the parties discussed above.
 
 
 `EPPZSwizzler`
