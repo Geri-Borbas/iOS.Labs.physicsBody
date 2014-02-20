@@ -12,7 +12,7 @@ BOOL putInto = [bodyA containsBody:bodyB];
 What it does
 ------------
 
-The category adds a really valuable readonly property for every `SKPhysicsBody called `path`.
+The category adds a really valuable **readonly property for every `SKPhysicsBody` called `path`**.
 This `CGPathRef` holds the `CGPath` representation of the currently transformed state for the
 body (in the coordinate space of the containing node).
 
@@ -36,12 +36,13 @@ enumeratePointsOfPath(body.path, ^(CGPoint eachPoint)
 });
 ```
 
-Another issue is to store the initial CGPath representation of the body upon creation. This code
-should take place in the SKPhysicsBody factory methods. Calling the default behaviour can be tricky
-(it could be a simple `super` call if we were extending the class).
+Another issue is to **store the initial `CGPath` representation** of the body upon creation. This initial
+path can be transformed later on when it requested. This code should take place in the SKPhysicsBody
+factory methods. Calling the default behaviour can be tricky (it could be a simple `super` call if we were
+extending the class).
 
-Solution is to "save" the default SKPhysicsBody factory implementations, then override the factories,
-and call the default behaviour fron within somewhere.
+Solution is to "save" the default SKPhysicsBody factory implementations, then **override the factories**,
+and call the default behaviour from within somewhere.
 
 For `+(SKPhysicsBody*)bodyWithCircleOfRadius:` it means that you create an implementation that is to
 be override `+(SKPhysicsBody*)bodyWithCircleOfRadius:` implementation, while you save the original
@@ -56,8 +57,7 @@ When you ask for an `SKPhysicsBody` instance from `SKPhysicsBody` class, you'd e
 `SKPhysicsBody` object in return. According to some design decision at Apple, **it will spit you
 up a [`PKPhysicsBody`][1] instance** (part of internal [PhysicsKit][2]), which of course won't have
 any instance method from the category you made for `SKPhysicsBody`. Extending that class can be
-carried out only via method / property **swizzlings**, so this issue put a weight on this
-`SKPhysicsBody+Containment` category.
+carried out only via method / property **swizzlings**, so this issue put a weight on this category.
 
 ```Objective-C
 // This is not what you'd expect.
