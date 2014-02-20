@@ -9,6 +9,10 @@
 #import "SKPhysicsBody+Containment.h"
 
 
+#define SK_PHYSICS_BODY_CONTAINMENT_LOGGING YES
+#define SKCLog if (SK_PHYSICS_BODY_CONTAINMENT_LOGGING) NSLog
+
+
 static NSString *const SKPhysicsBodyPathTypeCircle = @"SKPhysicsBodyPathTypeCircle";
 static NSString *const SKPhysicsBodyPathTypePath = @"SKPhysicsBodyPathTypePath";
 
@@ -33,7 +37,7 @@ static NSString *const SKPhysicsBodyPathTypePath = @"SKPhysicsBodyPathTypePath";
 @end
 
 
-#pragma mark - Public SKPhysicsBody properties
+#pragma mark - Public SKPhysicsBody properties (implementation placeholders)
 
 @implementation SKPhysicsBody (Containment)
 @dynamic path;
@@ -45,12 +49,53 @@ static NSString *const SKPhysicsBodyPathTypePath = @"SKPhysicsBodyPathTypePath";
 @end
 
 
-#pragma mark - Implementation placeholder object
+#pragma mark - Implementation donor
 
-static char initializingPathKey;
-static char pathTypeKey;
-static char radiusKey;
+@interface SKPhysicsBodyContainment : SKPhysicsBody
 
+@property (nonatomic) CGPathRef initializingPath;
+@property (nonatomic, readonly) CGPathRef path;
+-(BOOL)containsPoint:(CGPoint) point;
+-(BOOL)containsBody:(SKPhysicsBody*) body;
+
+@end
+
+
+#pragma mark - CGPath helpers
+
+CGPathRef centeredCircleWithRadius(CGFloat radius);
+CGPathRef centeredPathFromPath(CGPathRef path);
+
+typedef void(^CGPathPointEnumeratingBlock)(CGPoint eachPoint);
+void enumeratePointsOfPath(CGPathRef path, CGPathPointEnumeratingBlock enumeratingBlock);
+void CGPathEnumerationCallback(void *info, const CGPathElement *element);
+
+
+#pragma mark - Guest methods from EPPZGeometry
+
+typedef struct
+{
+    CGPoint center;
+    CGFloat radius;
+} CGCircle;
+
+typedef struct
+{
+    CGPoint a;
+    CGPoint b;
+    CGFloat width;
+    
+    CGCircle circleA;
+    CGCircle circleB;
+    
+} CGLine;
+
+CGVector __vectorBetweenPoints(CGPoint from, CGPoint to);
+CGFloat __distanceBetweenPoints(CGPoint from, CGPoint to);
+CGFloat __distanceBetweenPointAndLineSegment(CGPoint point, CGLine line);
+
+
+#pragma mark - Implementation donor
 
 @implementation SKPhysicsBodyContainment
 
@@ -80,20 +125,17 @@ static char radiusKey;
     [EPPZSwizzler replaceClassMethod:@selector(bodyWithPolygonFromPath:) ofClass:physicsBodyClass fromClass:self];
     
     // Add properties to `PKPhysicsBody`.
-    [EPPZSwizzler synthesizeAssignPropertyNamed:@"initializingPath"
-                                 ofTypeEncoding:@encode(CGPathRef)
-                                       forClass:physicsBodyInstanceClass
-                                       usingKey:&initializingPathKey];
+    [EPPZSwizzler synthesizeAssignedPropertyNamed:@"initializingPath"
+                                   ofTypeEncoding:@encode(CGPathRef)
+                                         forClass:physicsBodyInstanceClass];
     
-    [EPPZSwizzler synthesizeAssignPropertyNamed:@"pathType"
-                                 ofTypeEncoding:@encode(NSString)
-                                       forClass:physicsBodyInstanceClass
-                                       usingKey:&pathTypeKey];
+    [EPPZSwizzler synthesizeAssignedPropertyNamed:@"pathType"
+                                   ofTypeEncoding:@encode(NSString)
+                                         forClass:physicsBodyInstanceClass];
     
-    [EPPZSwizzler synthesizeRetainPropertyNamed:@"radius"
-                                 ofTypeEncoding:@encode(NSNumber)
-                                       forClass:physicsBodyInstanceClass
-                                       usingKey:&radiusKey];
+    [EPPZSwizzler synthesizeRetainedPropertyNamed:@"radius"
+                                   ofTypeEncoding:@encode(NSNumber)
+                                         forClass:physicsBodyInstanceClass];
      
     // Only a getter for `path`.
     [EPPZSwizzler addInstanceMethod:@selector(path) toClass:physicsBodyInstanceClass fromClass:self];

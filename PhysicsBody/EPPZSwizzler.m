@@ -9,13 +9,15 @@
 #import "EPPZSwizzler.h"
 
 
+static char associationKeyKey;
+
+
 @interface EPPZSwizzler ()
 
 +(void)synthesizePropertyNamed:(NSString*) propertyName
                 ofTypeEncoding:(const char*) typeEncoding
                       forClass:(Class) targetClass
-                    withPolicy:(objc_AssociationPolicy) policy
-                      usingKey:(void*) key;
+                    withPolicy:(objc_AssociationPolicy) policy;
 
 +(NSString*)setterMethodNameForPropertyName:(NSString*) propertyName;
 
@@ -122,36 +124,36 @@
     [self addInstanceMethod:NSSelectorFromString(setterMethodName) toClass:targetClass fromClass:sourceClass];
 }
 
-+(void)synthesizeAssignPropertyNamed:(NSString*) propertyName
-                      ofTypeEncoding:(const char*) typeEncoding
-                            forClass:(Class) targetClass
-                            usingKey:(void*) key
++(void)synthesizeAssignedPropertyNamed:(NSString*) propertyName
+                        ofTypeEncoding:(const char*) typeEncoding
+                              forClass:(Class) targetClass
 {
     [self synthesizePropertyNamed:propertyName
                    ofTypeEncoding:typeEncoding
                          forClass:targetClass
-                       withPolicy:OBJC_ASSOCIATION_ASSIGN
-                         usingKey:key];
+                       withPolicy:OBJC_ASSOCIATION_ASSIGN];
 }
 
-+(void)synthesizeRetainPropertyNamed:(NSString*) propertyName
-                      ofTypeEncoding:(const char*) typeEncoding
-                            forClass:(Class) targetClass
-                            usingKey:(void*) key
++(void)synthesizeRetainedPropertyNamed:(NSString*) propertyName
+                        ofTypeEncoding:(const char*) typeEncoding
+                              forClass:(Class) targetClass
 {
     [self synthesizePropertyNamed:propertyName
                    ofTypeEncoding:typeEncoding
                          forClass:targetClass
-                       withPolicy:OBJC_ASSOCIATION_RETAIN_NONATOMIC
-                         usingKey:key];
+                       withPolicy:OBJC_ASSOCIATION_RETAIN_NONATOMIC];
 }
 
 +(void)synthesizePropertyNamed:(NSString*) propertyName
                 ofTypeEncoding:(const char*) typeEncoding
                       forClass:(Class) targetClass
                     withPolicy:(objc_AssociationPolicy) policy
-                            usingKey:(void*) key
 {
+    // Associate the key for the property to the class itself.
+    NSString *keyObject = [NSString stringWithFormat:@"%@Key", propertyName];
+    void *key = (__bridge void*)keyObject;
+    objc_setAssociatedObject(targetClass, &associationKeyKey, keyObject, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+    
     // Getter implementation.
     IMP getterImplementation = imp_implementationWithBlock(^(id self)
     { return (id)objc_getAssociatedObject(self, key); });

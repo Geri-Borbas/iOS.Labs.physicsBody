@@ -9,6 +9,7 @@ A lovely category telling if a volume-based SKPhysicsBody is contained by anothe
 BOOL putInto = [bodyA containsBody:bodyB];
 ```
 
+
 What it does
 ------------
 
@@ -17,7 +18,18 @@ This `CGPathRef` holds the `CGPath` representation of the currently transformed 
 body (in the coordinate space of the containing node).
 
 The rest is just the geometry to test containment actually, and some swizzling to live in peace
-with `SpriteKit` runtime.
+with `SpriteKit` runtime. Everything is wrapped up into a threeliner interface.
+
+```Objective-C
+@interface SKPhysicsBody (Containment)
+
+@property (nonatomic, readonly) CGPathRef path;
+
+-(BOOL)containsPoint:(CGPoint) point;
+-(BOOL)containsBody:(SKPhysicsBody*) body;
+
+@end
+```
 
 
 Under the hood
@@ -74,9 +86,9 @@ runtime).
 NSLog(@"%@", SKPhysicsBody.class); // SKPhysicsBody
 ```
 
-So for the solution, I created a standalone **class `SKPhysicsBodyContainment` that holds all the
-implementation** that needs to be swizzled around. Then upon the `+(void)load` of this class, I distribute
-the implementations to the parties discussed above.
+So for the solution, I created a standalone "implementation donor class" **`SKPhysicsBodyContainment`
+that holds all the implementation** that needs to be swizzled around. Then upon the `+(void)load` of
+this class, I distribute the implementations to the parties discussed above.
 
 
 `EPPZSwizzler`
@@ -88,6 +100,11 @@ soon, hence the class prefix.
 
 Versions
 ---
+
+* 0.1.1
+
+    + Removed the need of `key` for property synthesizeing
+    + Cleaned up interface (as it is close to production)    
 
 * 0.1.0
 
